@@ -1,13 +1,129 @@
 {
-    "atomType": "Molecule",
-    "x": 0,
-    "y": 0,
-    "uniqueID": "id-46",
-    "name": "select.Clear",
-    "topLevel": true,
-    "allAtoms": [],
-    "allConnectors": [],
-    "unitsKey": "Unitless",
-    "fileTypeVersion": 1,
-    "filetypeVersion": 1
+  "atomType": "Molecule",
+  "x": 0,
+  "y": 0,
+  "uniqueID": "id-46",
+  "name": "select.Clear",
+  "ioValues": [
+    {
+      "name": "selection",
+      "ioValue": "__GEOMETRY_INPUT__"
+    },
+    {
+      "name": "clearEdges",
+      "ioValue": 10
+    },
+    {
+      "name": "clearFaces",
+      "ioValue": 10
+    },
+    {
+      "name": "clearParts",
+      "ioValue": 10
+    }
+  ],
+  "topLevel": true,
+  "allAtoms": [
+    {
+      "atomType": "Output",
+      "x": 0.98,
+      "y": 0.5,
+      "uniqueID": "id-47",
+      "ioValues": [
+        {
+          "name": "number or geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ]
+    },
+    {
+      "atomType": "Code",
+      "x": 0.4010416666666667,
+      "y": 0.6914285714285714,
+      "uniqueID": "id-49",
+      "ioValues": [
+        {
+          "name": "selection",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "clearFaces",
+          "ioValue": 10
+        },
+        {
+          "name": "clearEdges",
+          "ioValue": 10
+        },
+        {
+          "name": "clearParts",
+          "ioValue": 10
+        }
+      ],
+      "interpreterVersion": 1,
+      "code": "function run(selection: Assembly, clearFaces: boolean, clearEdges: boolean, clearParts: boolean) {\n  return selection.onLeafs((leaf) => {\n    if (leaf.selection) {\n      if (clearFaces) leaf.selection.faces = []\n      if (clearEdges) leaf.selection.edges = []\n      if (clearParts) leaf.selection.part = false;\n    }\n    return leaf;\n  })\n}",
+      "compiledCode": "\"use strict\";\nfunction run(selection, clearFaces, clearEdges, clearParts) {\n    return selection.onLeafs((leaf) => {\n        if (leaf.selection) {\n            if (clearFaces)\n                leaf.selection.faces = [];\n            if (clearEdges)\n                leaf.selection.edges = [];\n            if (clearParts)\n                leaf.selection.part = false;\n        }\n        return leaf;\n    });\n}\n"
+    },
+    {
+      "atomType": "Input",
+      "x": 0.0231,
+      "y": 0.27714285714285714,
+      "uniqueID": "id-58",
+      "name": "selection",
+      "type": "geometry"
+    },
+    {
+      "atomType": "Input",
+      "x": 0.0231,
+      "y": 0.36114285714285715,
+      "uniqueID": "id-61",
+      "name": "clearEdges",
+      "type": "boolean"
+    },
+    {
+      "atomType": "Input",
+      "x": 0.0231,
+      "y": 0.4451428571428572,
+      "uniqueID": "id-64",
+      "name": "clearFaces",
+      "type": "boolean"
+    },
+    {
+      "atomType": "Input",
+      "x": 0.0231,
+      "y": 0.5291428571428571,
+      "uniqueID": "id-67",
+      "name": "clearParts",
+      "type": "boolean"
+    }
+  ],
+  "allConnectors": [
+    {
+      "ap2Name": "number or geometry",
+      "ap1ID": "id-49",
+      "ap2ID": "id-47"
+    },
+    {
+      "ap2Name": "selection",
+      "ap1ID": "id-58",
+      "ap2ID": "id-49"
+    },
+    {
+      "ap2Name": "clearEdges",
+      "ap1ID": "id-61",
+      "ap2ID": "id-49"
+    },
+    {
+      "ap2Name": "clearFaces",
+      "ap1ID": "id-64",
+      "ap2ID": "id-49"
+    },
+    {
+      "ap2Name": "clearParts",
+      "ap1ID": "id-67",
+      "ap2ID": "id-49"
+    }
+  ],
+  "unitsKey": "Unitless",
+  "fileTypeVersion": 1,
+  "filetypeVersion": 1
 }
